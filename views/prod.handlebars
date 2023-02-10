@@ -1,0 +1,10 @@
+<h1>Lista de Produtos</h1>
+
+<div class="prod-container">
+  
+  {{#each listar}}
+      <strong> - {{this.id}} </strong> - 
+      {{nome}} - qtd em estoque: {{qtd}} <br>
+  {{/each}}
+
+</div>

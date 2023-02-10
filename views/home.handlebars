@@ -1,0 +1,18 @@
+
+    <h1>Cadastro de Produtos</h1>
+    <hr>
+    <form action="prod/insertprod" method="POST">
+        <div class="form-control">
+            <input type="hidden" name="id" id="id">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" placeholder="Digite o nome do produto">
+        </div>
+
+         <div class="form-control">
+            <label for="quant">Quantidade:</label>
+            <input type="number" name="quant" placeholder="Digite a quantidade em estoque">
+        </div>
+    
+        <input type="submit" value="Cadastrar">
+    </form>
+

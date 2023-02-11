@@ -5,22 +5,38 @@ const mysql = require('mysql')
 const app = express()
 
 
-app.engine('handlebars', exphbs.engine())
+app.engine('handlebars', exphbs.engine())/*A primeira linha app.engine
+('handlebars', exphbs.engine())configura o motor de visualização
+ do Express para o motor de modelo de visualização Handlebars. O Handlebars 
+ é uma biblioteca de modelo de visualização popular para aplicativos web, 
+ que permite criar facilmente modelos HTML dinâmicos. A função exphbs.engine() 
+ é uma função fornecida pelo pacote "express-handlebars" que retorna uma 
+instância do motor de modelo Handlebars configurada para ser usada com o Express.*/
 app.set('view engine', 'handlebars')
+/*app.set('view engine', 'handlebars') define a string "handlebars" como o 
+motor de modelo padrão para a aplicação. Isso significa que o Express usará
+ o Handlebars como o motor de modelo padrão para renderizar as visualizações
+de sua aplicação*/
 
 app.use(express.static('public'))
-
-app.get('/', (req, res) => {
-    res.render('home', { layout: false })
-
-})
 
 app.use(
     express.urlencoded({
         extended: true
         
 }) 
-)
+)/*A quinta linha app.use(express.urlencoded({ extended: true })) é uma 
+chamada para o middleware do Express que analisa o corpo das solicitações 
+POST e adiciona os dados ao objeto de solicitação como propriedades.
+ O objeto { extended: true } é uma opção que permite que dados complexos 
+ sejam transmitidos através do corpo da solicitação.*/
+
+ app.get('/', (req, res) => {
+    res.render('home', { layout: false })/*O res.render, irá renderizar os 
+    arquivos de acordo com o engine de views utilizado no sistema, que no caso
+    aqui é a pagina home do handlebars*/
+
+})
 
 app.post('/prod/insertprod', (req, res) => {
     const nome = req.body.nome
@@ -35,7 +51,7 @@ app.post('/prod/insertprod', (req, res) => {
 
         res.redirect('/')
     })
-})
+})//codigo cominterligação com a home handlebars
 
 //app.use(express.json) 
 app.get('/prod', (req, res) => {

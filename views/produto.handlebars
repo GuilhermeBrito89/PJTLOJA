@@ -5,3 +5,8 @@
 <p>Este item tem {{listarProd.qtd}} unidade(s) em estoque.</p>
 
 <a href="/prod/edit/{{listarProd.id}}">Editar</a>
+
+<form action="/prod/remove/{{listarProd.id}}" method="post">
+  <input type="submit" value="Excluir">
+</form>
+

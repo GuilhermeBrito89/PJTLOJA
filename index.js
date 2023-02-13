@@ -108,15 +108,7 @@ conn.query(sql, function(err, data){
 
 })
 
-const conn = mysql.createConnection({
-    host: '127.0.0.1',
-    user:'root',
-    port:'3306',
-    password: '',
-    database: 'teste'
-
-})
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 //pegando para editar registro
 app.get('/prod/edit/:id', (req, res) => {
@@ -136,6 +128,8 @@ app.get('/prod/edit/:id', (req, res) => {
         
     })
 })
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 //editando o registro com post
 app.post('/prod/updateprod', (req, res) => {
@@ -157,6 +151,35 @@ app.post('/prod/updateprod', (req, res) => {
 
 })
 
+////////////////////////////////////////////////////////////////////////////////////
+
+//delete
+
+app.post('/prod/remove/:id', (req, res) => {
+    const id = req.params.id
+
+    const sql = `DELETE FROM produto WHERE id = '${id}'`
+
+    conn.query(sql, function(err){
+        if(err){
+            console.log(err)
+            return
+        }
+
+        res.redirect('/prod')
+    })
+})
+
+/////////////////////////////////////////////////////////////////////////////////////////
+
+const conn = mysql.createConnection({
+  host: "127.0.0.1",
+  user: "root",
+  port: "3307",
+  password: "",
+  database: "teste",
+});
+
 conn.connect(function(err) {
     if(err){
         console.log(err)
@@ -166,3 +189,4 @@ conn.connect(function(err) {
 
     app.listen(3000)
 })
+
